@@ -33,9 +33,14 @@ jobs:
         compiler: pdflatex
         args: -interaction=nonstopmode -shell-escape
 
-    - name: Upload PDF
+    - name: Upload full PDF
       uses: actions/upload-artifact@v4
       with:
-        name: resume
-        path: resume
-	pattern: *pdf
+        name: resume.pdf
+        path: resume.pdf
+
+    - name: Upload onepage PDF
+      uses: actions/upload-artifact@v4
+      with:
+        name: onepage.pdf
+        path: onepage.pdf

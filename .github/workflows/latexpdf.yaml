@@ -19,15 +19,29 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    - name: Make PDF
+    - name: Make full PDF
       uses: dante-ev/latex-action@latest
       with:
         root_file: resume.tex
         compiler: pdflatex
         args: -interaction=nonstopmode -shell-escape
       
+    - name: Make one page PDF
+      uses: dante-ev/latex-action@latest
+      with:
+        root_file: onepage.tex
+        compiler: pdflatex
+        args: -interaction=nonstopmode -shell-escape
+
     - name: Upload PDF
       uses: actions/upload-artifact@v3
       with:
         name: resume
         path: resume.pdf
+
+    - name: Upload PDF
+      uses: actions/upload-artifact@v3
+      with:
+        name: onepage
+        path: onepage.pdf
+
